@@ -1,11 +1,12 @@
 {
   "name": "xero",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "dependencies": {
     "oauth": "0.9.10",
     "easyxml": "*",
-    "xml2js": "*"
+    "moment": "*"
   },
+  "devDependencies": {},
   "description": "Xero.com Node Library",
   "main": "index.js",
   "repository": {
@@ -17,12 +18,13 @@
     "node",
     "nodejs"
   ],
-  "author": "thallium205 <https://github.com/thallium205>",
+  "authors": [
+    "thallium205 <https://github.com/thallium205>",
+    "Nathan Hoad <https//github.com/nathanhoad>"
+  ],
   "license": "MIT",
   "readmeFilename": "README.md",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "gitHead": "3ceec8036cd7bafb6949a709220aa6f4f367f710"
+  }
 }
