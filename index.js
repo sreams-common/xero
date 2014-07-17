@@ -6,7 +6,7 @@ var XERO_BASE_URL = 'https://api.xero.com';
 var XERO_API_URL = XERO_BASE_URL + '/api.xro/2.0';
 
 
-function Xero(key, secret, rsa_key, showXmlAttributes) {
+function Xero (key, secret, rsa_key) {
     this.key = key;
     this.secret = secret;
 
@@ -14,7 +14,7 @@ function Xero(key, secret, rsa_key, showXmlAttributes) {
 
     this.oa = new oauth.OAuth(null, null, key, secret, '1.0', null, "PLAINTEXT", null, { "Accept": "application/json" });
     this.oa._signatureMethod = "RSA-SHA1"
-    this.oa._createSignature = function(signatureBase, tokenSecret) {
+    this.oa._createSignature = function (signatureBase, tokenSecret) {
         return crypto.createSign("RSA-SHA1").update(signatureBase).sign(rsa_key, output_format = "base64");
     }
     
@@ -22,7 +22,10 @@ function Xero(key, secret, rsa_key, showXmlAttributes) {
     require('./src/entities')(this);
 }
 
-Xero.prototype.call = function(method, path, body, callback) {
+Xero.prototype.XERO_BASE_URL = XERO_BASE_URL;
+Xero.prototype.XERO_API_URL = XERO_API_URL;
+
+Xero.prototype.call = function (method, path, body, callback) {
     var self = this;
     
     if (typeof body === "function" && callback == undefined) {
@@ -47,7 +50,7 @@ Xero.prototype.call = function(method, path, body, callback) {
           return callback(null, json, res);
         }
     };
-    return self.oa._performSecureRequest(self.key, self.secret, method, XERO_API_URL + path, null, xml, 'application/xml', callback ? process : null);
+    return self.oa._performSecureRequest(self.key, self.secret, method, self.XERO_API_URL + path, null, xml, 'application/xml', callback ? process : null);
 };
 
 

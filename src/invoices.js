@@ -72,6 +72,21 @@ module.exports = function (xero) {
         
         callback(null, json.Invoices[0]);
       })
+    },
+    
+    
+    delete: function (id, callback) {
+      var params = {
+        Status: xero.Invoices.DELETED
+      };
+      
+      xero.post('/Invoices/' + id, { Invoice: params }, function (err, json) {
+        if (err) {
+          return callback(err);
+        }
+        
+        callback(null, json.Invoices[0]);
+      });
     }
   };
   
