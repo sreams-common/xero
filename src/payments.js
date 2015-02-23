@@ -24,7 +24,7 @@ module.exports = function (xero) {
     
     
     create: function (params, callback) {
-      xero.put('/Payments', params, function (err, json) {
+      xero.put('/Payments', [params], function (err, json) {
         if (err) {
           return callback(err);
         }
