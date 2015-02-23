@@ -54,7 +54,7 @@ module.exports = function (xero) {
         params.DueDate = moment(params.DueDate).format('YYYY-MM-DD');
       }
       
-      xero.post('/Invoices', { Invoice: params }, function (err, json) {
+      xero.post('/Invoices', params, function (err, json) {
         if (err) {
           return callback(err);
         }
@@ -65,7 +65,7 @@ module.exports = function (xero) {
     
     
     update: function (id, params, callback) {
-      xero.post('/Invoices/' + id, { Invoice: params }, function (err, json) {
+      xero.post('/Invoices/' + id, params, function (err, json) {
         if (err) {
           return callback(err);
         }
@@ -80,7 +80,7 @@ module.exports = function (xero) {
         Status: xero.Invoices.DELETED
       };
       
-      xero.post('/Invoices/' + id, { Invoice: params }, function (err, json) {
+      xero.post('/Invoices/' + id, params, function (err, json) {
         if (err) {
           return callback(err);
         }

@@ -23,7 +23,7 @@ module.exports = function (xero) {
     },
 
     create: function (params, callback) {  
-      xero.post('/Contacts', { Contacts: params }, function (err, json) {
+      xero.post('/Contacts', params, function (err, json) {
         if (err) {
           return callback(err);
         }
@@ -34,7 +34,7 @@ module.exports = function (xero) {
     
     
     update: function (id, params, callback) {
-      xero.post('/Contacts/' + id, { Contacts: params }, function (err, json) {
+      xero.post('/Contacts/' + id, params, function (err, json) {
         if (err) {
           return callback(err);
         }
