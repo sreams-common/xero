@@ -2,7 +2,7 @@ var crypto  = require("crypto");
 var oauth   = require("oauth");
 var easyxml = require('easyxml');
 
-var XERO_BASE_URL = 'https://api-fake.xero.com';
+var XERO_BASE_URL = 'https://api.xero.com';
 var XERO_API_URL = XERO_BASE_URL + '/api.xro/2.0';
 
 
